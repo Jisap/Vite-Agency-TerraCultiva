@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { menuLinks } from '../../assets/data';
 
@@ -27,7 +27,7 @@ const Navigation = () => {
       >
         {/* Menu Toggle */}
         <div
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen(true)}
           className='flex items-center gap-3 bg-white/10 backdrop-blur-md py-2 px-4 rounded-full border border-white/10 cursor-pointer hover:bg-white/20 transition-all group'>
           <Menu
             size={24}
@@ -65,7 +65,7 @@ const Navigation = () => {
                 Navigation
               </span>
 
-              <div className='size-12 rounded-full border-white/10 center-item hover:bg-white hover:text-black transition-all duration-300 cursor-pointer group/close'>
+              <div onClick={() => setIsOpen(false)} className='size-12 rounded-full border-white/10 center-item hover:bg-white hover:text-black transition-all duration-300 cursor-pointer group/close'>
                 <X size={24} />
               </div>
             </div>
@@ -91,13 +91,41 @@ const Navigation = () => {
                   >
                     {link.title}
                   </a>
+
+                  <ArrowUpRight size={40} className='opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-green-500 hidden md:block' />
                 </motion.div>
               ))}
             </div>
 
             {/* Menu Footer */}
-            <div>
-              Menu Footer
+            <div className='grid grid-cols-1 md:grid-cols-3 pt-8 border-t border-white/10 gap-8'>
+              <div>
+                <p className='text-[10px] font-black uppercase text-zinc-500 tracking-widest mb-4'>
+                  Location
+                </p>
+
+                <p className='text-sm'>
+                  123 Green Valley Road <br />
+                  Terra Cultiva, CA 90210
+                </p>
+              </div>
+
+              <div>
+                <p className='text-[10px] font-black uppercase text-zinc-500 tracking-widest mb-4'>
+                  Socials
+                </p>
+
+                <div className='flex gap-4 text-sm'>
+                  <a href="#" className='hover:text-green-500 transition-colors'>Instagram</a>
+                  <a href="#" className='hover:text-green-500 transition-colors'>LinkedIn</a>
+                </div>
+              </div>
+
+              <div className='flex flex-col items-end justify-end'>
+                <span className='text-zinc-700 text-[10vw] font-black leading-none select-none space-font'>
+                  TC&copy;
+                </span>
+              </div>
             </div>
           </motion.div>
         )}
