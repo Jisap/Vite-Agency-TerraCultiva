@@ -101,7 +101,7 @@ const Navigation = () => {
             <div className='flex flex-col md:flex-row justify-between items-start md:items-end gap-10 pt-10 border-t border-white/5'>
 
               {/* Sección Información */}
-              <div className='flex flex-col gap-8 md:gap-16'>
+              <div className='flex flex-col gap-4 md:gap-8'>
                 <div className='flex flex-col gap-2'>
                   <span className='text-[10px] uppercase tracking-[0.4em] text-zinc-500 font-medium'>
                     Location
