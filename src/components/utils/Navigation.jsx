@@ -53,16 +53,16 @@ const Navigation = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ y: "-100" }}
+            initial={{ y: "-100%" }}
             animate={{ y: "0" }}
-            exit={{ y: "-100" }}
+            exit={{ y: "-100%" }}
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            className='fixed inset-0 z-[200] bg-zinc-900 text-white p-6 md:p-12 flex flex-col'
+            className='fixed inset-0 z-[200] bg-zinc-950 text-white p-6 md:p-12 flex flex-col'
           >
             {/* Menu Header */}
             <div className='flex justify-between items-center'>
               <span className='text-sm lg:text-base capitalize font-medium tracking-wider text-zinc-500'>
-                Navigation
+                // Navigation
               </span>
 
               <div onClick={() => setIsOpen(false)} className='size-12 rounded-full border-white/10 center-item hover:bg-white hover:text-black transition-all duration-300 cursor-pointer group/close'>
