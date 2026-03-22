@@ -1,3 +1,4 @@
+import Hero from "./components/sections/Hero";
 import Navigation from "./components/utils/Navigation";
 
 const App = () => {
@@ -7,7 +8,7 @@ const App = () => {
 
     {/* Main: Dynamic Part */}
     <main id="main-content" className="max-w-8xl mx-auto">
-
+      <Hero />
     </main>
 
 
