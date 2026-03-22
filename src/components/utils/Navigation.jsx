@@ -28,14 +28,10 @@ const Navigation = () => {
         {/* Menu Toggle */}
         <div
           onClick={() => setIsOpen(true)}
-          className='flex items-center gap-3 bg-white/10 backdrop-blur-md py-2 px-4 rounded-full border border-white/10 cursor-pointer hover:bg-white/20 transition-all group'>
-          <Menu
-            size={24}
-            className='group-hover:rotate-90 transition-transform duration-300'
-          />
-          <span className='text-sm font-black uppercase tracking-widest'>
-            Menu
-          </span>
+          className='flex items-center gap-3 bg-white/10 backdrop-blur-md py-2 px-4 rounded-full border border-white/10 cursor-pointer hover:bg-white/20 transition-all group'
+        >
+          <Menu size={24} className='group-hover:rotate-90 transition-transform duration-300' />
+          <span className='text-sm font-black uppercase tracking-widest'>Menu</span>
         </div>
 
         {/* Logo */}
@@ -44,12 +40,12 @@ const Navigation = () => {
         </div>
 
         {/* CTA Button */}
-        <button className='hidden md:block bg-white text-black px-6 py-2 rounded-full text-sm uppercase font-bold tracking-wide cursor-pointer hover:bg-zinc-900/80 hover:backdrop-blur-sm hover:text-zinc-50 transition-all duration-150 ease-in hover:-translate-y-1 hover:animate-border border-1 border-transparent active:scale-95'>
+        <button className='hidden md:block bg-white text-black px-6 py-2 rounded-full text-sm uppercase font-bold tracking-wide cursor-pointer hover:bg-zinc-900/80 hover:backdrop-blur-sm hover:text-zinc-50 transition-all duration-150 ease-in hover:-translate-y-1 border-1 border-transparent active:scale-95'>
           Get Started
         </button>
-
       </nav>
-      {/* Full screen menu*/}
+
+      {/* Full screen menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -57,50 +53,52 @@ const Navigation = () => {
             animate={{ y: "0" }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            className='fixed inset-0 z-[200] bg-zinc-950 text-white p-6 md:p-12 flex flex-col'
+            className='fixed inset-0 z-[200] bg-zinc-950 text-white p-6 md:p-12 flex flex-col justify-between'
           >
-            {/* Menu Header - Fixed Area */}
-            <div className='flex-shrink-0 flex justify-between items-center pb-8'>
+            {/* Menu Header */}
+            <div className='flex justify-between items-center'>
               <span className='text-sm lg:text-base capitalize font-medium tracking-wider text-zinc-500'>
                 // Navigation
               </span>
-
-              <div onClick={() => setIsOpen(false)} className='size-12 rounded-full border border-white/10 center-item hover:bg-white hover:text-black transition-all duration-300 cursor-pointer group/close'>
+              <div
+                onClick={() => setIsOpen(false)}
+                className='size-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 cursor-pointer'
+              >
                 <X size={24} />
               </div>
             </div>
 
-            {/* Huge Menu Links - Independent Scroll Area */}
-            <div className='flex-1 overflow-y-auto min-h-0 py-8 hide-scrollbar scroll-smooth'>
-              <div className='min-h-full flex flex-col justify-center gap-4 md:gap-8 lg:gap-[4vh]'>
-                {menuLinks.map((link, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 * i + 0.3 }}
-                    className='group flex items-center gap-6'
+            {/* Menu Links */}
+            <div className='flex flex-col gap-4 md:gap-6'>
+              {menuLinks.map((link, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 * i + 0.3 }}
+                  className='group flex items-center gap-6'
+                >
+                  <span className='text-zinc-600 text-xs md:text-sm font-black italic mt-4'>
+                    0{i + 1}
+                  </span>
+
+                  <a
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className='text-[clamp(1.5rem,10vw,6vh)] md:text-[7vh] lg:text-[7.5vh] font-medium tracking-normal hover:pl-8 transition-all duration-500 group-hover:text-green-500 leading-tight whitespace-nowrap'
                   >
-                    <span className='text-zinc-600 text-xs md:text-sm font-black italic mt-4'>
-                      0{i + 1}
-                    </span>
-
-                    <a
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className='text-[clamp(1.5rem,10vw,6vh)] md:text-[7vh] lg:text-[7.5vh] font-medium tracking-normal hover:pl-8 transition-all duration-500 group-hover:text-green-500 leading-tight whitespace-nowrap'
-                    >
-                      {link.title}
-                    </a>
-
-                    <ArrowUpRight size={40} className='opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-green-500 hidden md:block' />
-                  </motion.div>
-                ))}
-              </div>
+                    {link.title}
+                  </a>
+                  <ArrowUpRight
+                    size={40}
+                    className='opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-green-500 hidden md:block'
+                  />
+                </motion.div>
+              ))}
             </div>
 
-            {/* Menu Footer - Fixed Area */}
-            <div className='mt-auto flex-shrink-0 flex flex-col md:flex-row justify-between items-start md:items-end gap-10 pt-10 border-t border-white/5'>
+            {/* Menu Footer */}
+            <div className='flex flex-col md:flex-row justify-between items-start md:items-end gap-10 pt-10 border-t border-white/5'>
 
               {/* Sección Información */}
               <div className='flex flex-col gap-8 md:gap-16'>
@@ -146,16 +144,15 @@ const Navigation = () => {
                     All Rights Reserved
                   </span>
                 </div>
-
-                <span className='text-zinc-900/50 text-[10vh] font-black leading-none select-none space-font pointer-events-none hidden lg:block'>
+                <span className='text-zinc-900/50 text-[10vh] font-black leading-none select-none pointer-events-none hidden lg:block'>
                   TC
                 </span>
               </div>
-            </div>
 
-          </motion.div>
+            </div >
+          </motion.div >
         )}
-      </AnimatePresence>
+      </AnimatePresence >
     </>
   )
 }
