@@ -1,5 +1,18 @@
+import Navigation from "./components/utils/Navigation";
+
 const App = () => {
-  return <div className="bg-blue-500 p-4 text-white text-2xl">App</div>;
+  return <div className="minh-screen bg-white text-zinc-800">
+    {/* Header */}
+    <Navigation />
+
+    {/* Main: Dynamic Part */}
+    <main id="main-content" className="max-w-8xl mx-auto">
+
+    </main>
+
+
+    {/* Footer */}
+  </div>;
 };
 
 export default App;
