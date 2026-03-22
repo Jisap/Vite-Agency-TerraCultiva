@@ -71,7 +71,7 @@ const Navigation = () => {
             </div>
 
             {/* Huge Menu Links */}
-            <div className='flex-1 flex flex-col justify-center'>
+            <div className='flex-1 flex flex-col justify-center gap-4 md:gap-8 lg:gap-[3vh] xl:gap-[4vh]'>
               {menuLinks.map((link, i) => (
                 <motion.div
                   key={i}
@@ -87,7 +87,7 @@ const Navigation = () => {
                   <a
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className='text-[14vw] md:text-[5vw] font-medium tracking-tighter hover:pl-8 transition-all duration-500 group-hover:text-green-500'
+                    className='text-[14vw] md:text-[8vh] font-medium tracking-normal hover:pl-8 transition-all duration-500 group-hover:text-green-500 leading-tight'
                   >
                     {link.title}
                   </a>
@@ -98,15 +98,14 @@ const Navigation = () => {
             </div>
 
             {/* Menu Footer */}
-            <div className='grid grid-cols-1 md:grid-cols-3 pt-8 border-t border-white/10 gap-8'>
+            <div className='grid grid-cols-2 md:grid-cols-3 pt-4 border-t border-white/10 gap-6 md:gap-12'>
               <div>
                 <p className='text-[10px] font-black uppercase text-zinc-500 tracking-widest mb-4'>
                   Location
                 </p>
 
                 <p className='text-sm'>
-                  123 Green Valley Road <br />
-                  Terra Cultiva, CA 90210
+                  123 Green Valley Road - Terra Cultiva, CA 90210
                 </p>
               </div>
 
@@ -121,8 +120,8 @@ const Navigation = () => {
                 </div>
               </div>
 
-              <div className='flex flex-col items-end justify-end'>
-                <span className='text-zinc-700 text-[10vw] font-black leading-none select-none space-font'>
+              <div className='flex flex-col justify-sart md:items-end md:justify-end'>
+                <span className='text-zinc-700 text-[10vw] md:text-[7vh] lg:text-[8vh] font-black leading-none select-none space-font'>
                   TC&copy;
                 </span>
               </div>
