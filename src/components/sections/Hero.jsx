@@ -64,7 +64,30 @@ const Hero = () => {
       </div>
 
       {/* Main content */}
-      <div></div>
+      <div className="relative z-10 container mx-auto h-full flex flex-col justify-center px-6 md:px-12">
+        {/* Intro Paragraph */}
+        <div className="max-w-md ml-auto mb-12">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="text-sm md:tex-base text-zinc-300 font-medium leading-relaxed"
+          >
+            We are passionate{" "}
+            <span className="text-white font-bold underline decoration-green-500/50">
+              sustainable agriculture
+            </span>{" "}
+            and commited to providing high-quality products that nourish both{" "}
+            <span className="text-white font-bold italic">
+              people and the planet.
+            </span>
+          </motion.p>
+        </div>
+
+        {/* Main Heading */}
+
+        {/* Hero Footer & Progress Bar */}
+      </div>
 
     </div>
   )
