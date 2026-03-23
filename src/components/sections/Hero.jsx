@@ -85,6 +85,57 @@ const Hero = () => {
         </div>
 
         {/* Main Heading */}
+        <div className="relative">
+          <motion.h1
+            className="text-[15vw] md:text-[12vw] font-medium leading-[0.8] tracking-tighter"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            Terra Cultiva
+          </motion.h1>
+
+          {/* Floating Pills */}
+          {/* 1 */}
+          <motion.div
+            className="absolute top-[10%] right-[10%] md-right-[20%] bg-green-50 text-zinc-900 px-4 py-2 md:px-6 md:py-3 rounded-full flex items-center gap-3 shadow-2xl rotate-6"
+          >
+            <div className="size-8 rounded-full bg-white center-item border border-zinc-200">
+              <span className="text-xs font-bold">$</span>
+            </div>
+
+            <span className="text-xs md:text-sm font-black uppercase tracking-tight">
+              &14 Billion
+            </span>
+          </motion.div>
+
+          {/* 2 */}
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.7, type: "spring" }}
+            className="absolute bottom-[-5%] lg:bottom-[25%] left-[40%] bg-green-50 text-zinc-900 px-4 py-2 mb:px-6 md:py-3 lg:py-4 rounded-full flex items-center gap-3 shadow-2xl -rotate-3"
+          >
+            <div className="flex -space-x-2">
+              {[1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="size-6 lg:size-9 rounded-full border-2 border-white bg-zinc-300 overflow-hidden hover:-translate-y-1 hover:ease-in"
+                >
+                  <img
+                    src={`/images/user-${i + 1}.png`}
+                    alt="avatar-image"
+                    className="size-full saturate-120 cursor-pointer hover:scale-110 ease-out" />
+                </div>
+              ))}
+            </div>
+
+            <span className="text-xs md:text-sm font-black tracking-tight">
+              126,000+
+            </span>
+          </motion.div>
+
+        </div>
 
         {/* Hero Footer & Progress Bar */}
       </div>
