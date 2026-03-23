@@ -144,7 +144,7 @@ const Navigation = () => {
                     All Rights Reserved
                   </span>
                 </div>
-                <span className='text-zinc-900/50 text-[10vh] font-black leading-none select-none pointer-events-none hidden lg:block'>
+                <span className='text-zinc-900/50 text-[10vh] font-black leading-none select-none pointer-events-none hidden md:block'>
                   TC
                 </span>
               </div>

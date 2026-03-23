@@ -43,7 +43,25 @@ const Hero = () => {
       </div>
 
       {/* Side pagination (Vertical Lines) */}
-      <div></div>
+      <div className="absolute top-1/2 right-6 md:right-12 -translate-y-1/2 flex flex-col gap-4">
+        {images.map((_, i) => (
+          <div key={i} className="flex flex-col items-end gap-1">
+            <span
+              className={`text-[8px] font-black transition-opacity duration-500
+                ${i === index ? "opacity-100" : "opacity-0"}
+              `}
+            >
+              0{i + 1}
+            </span>
+
+            <div className={
+              `h-12 w-[1px] transition-all duration-1000
+              ${i === index ? "bg-green-500 h-20" : "bg-white/20"}
+              `}
+            />
+          </div>
+        ))}
+      </div>
 
       {/* Main content */}
       <div></div>
