@@ -98,7 +98,7 @@ const Hero = () => {
           {/* Floating Pills */}
           {/* 1 */}
           <motion.div
-            className="absolute top-[10%] right-[10%] md-right-[20%] bg-green-50 text-zinc-900 px-4 py-2 md:px-6 md:py-3 rounded-full flex items-center gap-3 shadow-2xl rotate-6"
+            className="absolute hidden top-[10%] right-[10%] md-right-[20%] bg-green-50 text-zinc-900 px-4 py-2 md:px-6 md:py-3 rounded-full md:flex items-center gap-3 shadow-2xl rotate-6"
           >
             <div className="size-8 rounded-full bg-white center-item border border-zinc-200">
               <span className="text-xs font-bold">$</span>
@@ -114,7 +114,7 @@ const Hero = () => {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.7, type: "spring" }}
-            className="absolute bottom-[-5%] lg:bottom-[25%] left-[40%] bg-green-50 text-zinc-900 px-4 py-2 mb:px-6 md:py-3 lg:py-4 rounded-full flex items-center gap-3 shadow-2xl -rotate-3"
+            className="absolute bottom-[70%] lg:bottom-[25%] left-[40%] bg-green-50 text-zinc-900 px-4 py-2 mb:px-6 md:py-3 lg:py-4 rounded-full flex items-center gap-3 shadow-2xl -rotate-3"
           >
             <div className="flex -space-x-2">
               {[1, 2, 3].map((i) => (
@@ -143,15 +143,37 @@ const Hero = () => {
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: "0%" }}
-              transition={{ duration: SLIDE_DURATION / 1000, ease: linear }}
+              transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
               className="absolute inset-0 bg-green-500/60"
-            >
+            />
+          </div>
 
+          <div className="flex flex-col md:flex-row lg:items-end justify-between gap-8">
+            <div className="lg:text-lg font-medium capitalize tracking-wide flex items-center gap-2">
+              <span className="text-zinc-500">//</span>
+              Roots in Sustainability
+            </div>
+
+            <div className="flex flex-wrap gap-4 md:gap-8">
+              {["Organic Farming", "Hydroponics", "Vertical Farming", "Farm Management"].map((item, i) => (
+                <a
+                  key={i}
+                  className="text-sm capitalize tracking-wider text-zinc-400 hover:text-white"
+                >
+                  [{item}]
+                </a>
+              ))}
+            </div>
+
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+              className="size-10 rounded-full border border-white/20 center-item cursor-pointer hover:bg-white/10 transition-all">
+              <ArrowDown size={16} />
             </motion.div>
           </div>
         </div>
       </div>
-
     </div>
   )
 }
