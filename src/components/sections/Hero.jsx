@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { ArrowDown } from "lucide-react"
 import { useEffect, useState } from "react"
+import CountUp from "react-countup"
 
 
 const Hero = () => {
@@ -95,46 +96,86 @@ const Hero = () => {
             Terra Cultiva
           </motion.h1>
 
-          {/* Floating Pills */}
-          {/* 1 */}
+
+          {/* Pill 1: Market Impact */}
           <motion.div
-            className="absolute hidden top-[10%] right-[10%] md-right-[20%] bg-green-50 text-zinc-900 px-4 py-2 md:px-6 md:py-3 rounded-full md:flex items-center gap-3 shadow-2xl rotate-6"
+            initial={{ opacity: 0, x: -20, rotate: -6 }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              y: [0, -10, 0]
+            }}
+            transition={{
+              opacity: { delay: 0.8 },
+              x: { delay: 0.8 },
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="absolute -top-25 -left-4 md:-left-12 hidden md:flex items-center gap-3 -rotate-6 z-20 px-[18px] py-[11px] pl-[14px] bg-white/[0.055] backdrop-blur-[24px] backdrop-saturate-[1.6] border-[0.5px] border-white/10 rounded-[16px]"
           >
-            <div className="size-8 rounded-full bg-white center-item border border-zinc-200">
-              <span className="text-xs font-bold">$</span>
+            <div className="size-8 rounded-full shrink-0 bg-[#5dca7a]/[0.14] border-[0.5px] border-[#5dca7a]/30 flex items-center justify-center text-[14px] font-medium text-[#6ee88a]">
+              $
             </div>
 
-            <span className="text-xs md:text-sm font-black uppercase tracking-tight">
-              &14 Billion
-            </span>
+            <div className="flex flex-col text-left">
+              <span className="text-[9px] font-medium tracking-[0.13em] uppercase text-white/35 leading-none mb-1">
+                Market impact
+              </span>
+
+              <span className="text-[14px] font-medium text-white/90 tracking-[-0.02em] leading-none">
+                <span className="text-[#6ee88a]">$</span>
+                <CountUp end={14} duration={3} delay={1} />
+                <span className="text-[#6ee88a]"> B+</span>
+              </span>
+            </div>
           </motion.div>
 
-          {/* 2 */}
+          {/* Pill 2: Social Proof */}
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.7, type: "spring" }}
-            className="absolute bottom-[70%] lg:bottom-[25%] left-[40%] bg-green-50 text-zinc-900 px-4 py-2 mb:px-6 md:py-3 lg:py-4 rounded-full flex items-center gap-3 shadow-2xl -rotate-3"
+            initial={{ scale: 0, opacity: 0, rotate: -3 }}
+            animate={{
+              scale: 1,
+              opacity: 1,
+              y: [0, 10, 0]
+            }}
+            transition={{
+              scale: { delay: 1, type: "spring" },
+              opacity: { delay: 1 },
+              y: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="absolute -bottom-16 md:-bottom-14 -right-2 md:right-8 flex items-center gap-3 -rotate-3 z-20 px-[18px] py-[11px] pl-[14px] bg-white/[0.055] backdrop-blur-[24px] backdrop-saturate-[1.6] border-[0.5px] border-white/10 rounded-[16px]"
           >
-            <div className="flex -space-x-2">
+            <div className="flex">
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="size-6 lg:size-9 rounded-full border-2 border-white bg-zinc-300 overflow-hidden hover:-translate-y-1 hover:ease-in"
+                  className={`
+                    size-[26px] rounded-full border-[1.5px] border-[#0c1a0e]/90 bg-[#1e3d22] overflow-hidden shrink-0 
+                    ${i < 3 ? "-mr-2" : "mr-0"}
+                  `}
                 >
                   <img
                     src={`/images/user-${i + 1}.png`}
-                    alt="avatar-image"
-                    className="size-full saturate-120 cursor-pointer hover:scale-110 ease-out" />
+                    alt="avatar"
+                    className="size-full object-cover"
+                  />
                 </div>
               ))}
             </div>
 
-            <span className="text-xs md:text-sm font-black tracking-tight">
-              126,000+
-            </span>
-          </motion.div>
+            <div className="w-px h-7 shrink-0 bg-white/10" />
 
+            <div className="flex flex-col text-left">
+              <span className="text-[9px] font-medium tracking-[0.13em] uppercase text-white/35 leading-none mb-1">
+                Active growers
+              </span>
+
+              <span className="text-[14px] font-medium text-white/90 tracking-[-0.02em] leading-none">
+                <span className="text-[#6ee88a]">
+                  <CountUp end={126000} duration={4} delay={1.2} separator="," />
+                </span>+
+              </span>
+            </div>
+          </motion.div>
         </div>
 
         {/* Hero Footer & Progress Bar */}
