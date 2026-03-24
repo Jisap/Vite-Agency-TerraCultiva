@@ -138,6 +138,18 @@ const Hero = () => {
         </div>
 
         {/* Hero Footer & Progress Bar */}
+        <div className="absolute bottom-12 left-0 w-full px-6 md:px-12">
+          <div className="w-full h-[1px] bg-white/10 relative overflow-hidden mb-6">
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: "0%" }}
+              transition={{ duration: SLIDE_DURATION / 1000, ease: linear }}
+              className="absolute inset-0 bg-green-500/60"
+            >
+
+            </motion.div>
+          </div>
+        </div>
       </div>
 
     </div>
