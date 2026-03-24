@@ -35,8 +35,33 @@ const About = () => {
         </div>
 
         {/* Content Area */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-32">
+          <div className="lg:col-span-5">
+            <div className="flex items-center gap-4 text-lg lg:text-xl capitalize tracking-wide text-zinc-400 mb-2">
+              <span>//</span> Harvesting Legacy,
+            </div>
+
+            <div className="pl-10 text-xl md:text-2xl font-medium tracking-tight text-zinc-800 italic">
+              Planting Tomorrow,
+            </div>
+          </div>
+
+          <div className="lg:col-span-7">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-sm md:text-base text-zinc-500 font-medium leading-relaxed max-w-xl"
+            >
+              {aboutUsContent}
+            </motion.p>
+          </div>
+        </div>
 
         {/* Massive Footer heading */}
+        <div className="relative">
+
+        </div>
 
         {/* Technical Bottom Bar */}
 
