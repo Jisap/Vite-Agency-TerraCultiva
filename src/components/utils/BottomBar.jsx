@@ -2,7 +2,7 @@ import React from 'react'
 
 const BottomBar = ({ title }) => {
   return (
-    <div className='mt-20 w-full pt-10 border-t border-zinc-100 justify-between items-center text-sm font-medium capitalize text-zinc-400'>
+    <div className='mt-20 w-full pt-10 border-t border-zinc-100 flex justify-between items-center text-sm font-medium capitalize text-zinc-400'>
       <span>
         {title ? title : "Section Title Here"}
       </span>

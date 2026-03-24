@@ -59,11 +59,25 @@ const About = () => {
         </div>
 
         {/* Massive Footer heading */}
-        <div className="relative">
+        <div className="relative mt-20">
+          <motion.h2
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
+            className="text-[10vw] lg:text-[8vw] font-medium leading-none tracking-tighter text-green-900"
+          >
+            <span className="text-zinc-300">
+              Rooted in
+            </span>
 
+            Tradition, <br /> Growing for the Future
+
+          </motion.h2>
         </div>
 
         {/* Technical Bottom Bar */}
+        <BottomBar title="About Us" />
 
       </div>
     </section>
