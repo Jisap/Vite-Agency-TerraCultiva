@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { ArrowDown } from "lucide-react"
 import { useEffect, useState } from "react"
 import CountUp from "react-countup"
+import Counter from "../utils/Counter"
 
 
 const Hero = () => {
@@ -123,7 +124,8 @@ const Hero = () => {
 
               <span className="text-[14px] font-medium text-white/90 tracking-[-0.02em] leading-none">
                 <span className="text-[#6ee88a]">$</span>
-                <CountUp end={14} duration={3} delay={1} />
+                {/* <CountUp end={14} duration={3} delay={1} /> */}
+                <Counter value={14} />
                 <span className="text-[#6ee88a]"> B+</span>
               </span>
             </div>
@@ -170,9 +172,11 @@ const Hero = () => {
               </span>
 
               <span className="text-[14px] font-medium text-white/90 tracking-[-0.02em] leading-none">
+                <Counter value={126} />.000
+                {/* <CountUp end={126000} duration={4} delay={1.2} separator="," /> */}
                 <span className="text-[#6ee88a]">
-                  <CountUp end={126000} duration={4} delay={1.2} separator="," />
-                </span>+
+                  +
+                </span>
               </span>
             </div>
           </motion.div>

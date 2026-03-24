@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react"
 
 // Contador animado desde 0 hasta un número específico "value"
 
-const Counter = ({ value, isRating = false }) => {
+const Counter = ({ value = 0, isRating = false }) => {
 
   const count = useMotionValue(0);                                       // Estado del value que no recarga la página
   const rounded = useTransform(count, (latest) => Math.round(latest));   // Redondea el valor
