@@ -130,10 +130,14 @@ const CaseStudy = () => {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ 
+                  duration: 1.2, 
+                  delay: index * 0.15, 
+                  ease: [0.16, 1, 0.3, 1] 
+                }}
                 className="flex flex-col gap-2"
               >
                 <span className="text-sm capitalize tracking-wide text-zinc-300">
