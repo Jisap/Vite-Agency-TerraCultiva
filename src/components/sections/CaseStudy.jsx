@@ -21,7 +21,7 @@ const CaseStudy = () => {
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             >
               Real Solutions, <br />{" "}
-              <motion.span 
+              <motion.span
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -34,7 +34,7 @@ const CaseStudy = () => {
           </div>
 
           <div className="lg:col-span-6 lg:pl-12">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -121,9 +121,34 @@ const CaseStudy = () => {
         </div>
 
         {/* Metadata footer */}
-        <div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12 border-t border-zinc-100">
+          {
+            [
+              { label: "Year", value: "// 2025" },
+              { label: "Category", value: "// Organic Farming" },
+              { label: "Company", value: "// GreenFields AgroCo" },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col gap-2"
+              >
+                <span className="text-sm capitalize tracking-wide text-zinc-300">
+                  {item.label}
+                </span>
 
+                <span className="text-sm font-bold text-zinc-900 tracking-tight">
+                  {item.value}
+                </span>
+              </motion.div>
+            ))
+          }
         </div>
+
+        <BottomBar title="Case of Study" />
       </div>
     </section>
   )
