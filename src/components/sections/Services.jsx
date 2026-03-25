@@ -6,13 +6,13 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 
 const Services = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [itemsToShow, setItemsToShow] = useState(4)
+  const [currentIndex, setCurrentIndex] = useState(0)               // Índice de la tarjeta que está "primera" visible
+  const [itemsToShow, setItemsToShow] = useState(4);                // Cuántas tarjetas caben según el ancho de pantalla (1, 2 ó 4)
 
-  // Duplicamos los servicios para que el slider tenga contenido y sea funcional
-  const extendedServices = Array(4).fill(services).flat()
 
-  useEffect(() => {
+  const extendedServices = Array(4).fill(services).flat()           // Duplicamos los servicios para que el slider tenga contenido y sea funcional
+
+  useEffect(() => {                                                 // escucha el resize de la ventana y actualiza itemsToShow en consecuencia
     const handleResize = () => {
       if (window.innerWidth < 768) setItemsToShow(1)
       else if (window.innerWidth < 1024) setItemsToShow(2)
@@ -65,6 +65,7 @@ const Services = () => {
         <div className="relative overflow-hidden mb-12">
           <motion.div
             className="flex gap-4"
+            // Desplaza exactamente el ancho de una tarjeta por índice - el gap-5 (16px) entre tarjetas
             animate={{ x: `calc(-${currentIndex} * (100% / ${itemsToShow}) - ${currentIndex * 16 / itemsToShow}px)` }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
@@ -75,6 +76,7 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: (index % 4) * 0.1 }}
                 className="group relative h-[450px] flex-shrink-0 overflow-hidden rounded-sm cursor-pointer"
+                // Divide el ancho total del contenedor entre `itemsToShow`, restando previamente el espacio total ocupado por los gaps `(itemsToShow - 1) * 16px`
                 style={{ width: `calc((100% - ${(itemsToShow - 1) * 16}px) / ${itemsToShow})` }}
               >
                 <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110">
@@ -143,4 +145,4 @@ const Services = () => {
   )
 }
 
-export default Services
+export default Services
