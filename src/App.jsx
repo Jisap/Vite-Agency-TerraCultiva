@@ -1,4 +1,5 @@
 import About from "./components/sections/About";
+import CaseStudy from "./components/sections/CaseStudy";
 import Hero from "./components/sections/Hero";
 import Services from "./components/sections/Services";
 import Navigation from "./components/utils/Navigation";
@@ -13,6 +14,7 @@ const App = () => {
       <Hero />
       <About />
       <Services />
+      <CaseStudy />
     </main>
 
 
