@@ -117,6 +117,49 @@ const CaseStudy = () => {
                 </div>
               </motion.div>
             </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="flex items-center justify-end gap-6 mt-12"
+            >
+              <span className="text-[10px] font-black uppercase tracking-widest text-zinc-300">
+                Prev
+              </span>
+
+              <div className="flex-1 max-w-[120px] h-[2px] bg-zinc-100 relative overflow-hidden">
+                <motion.div 
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "50%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute left-0 top-0 h-full bg-green-800"
+                />
+              </div>
+
+              <span className="text-[10px] font-black uppercase tracking-widest text-zinc-300">
+                Next
+              </span>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-auto text-right"
+            >
+              <h3 className="text-5xl md:text-7xl font-medium tracking-tighter text-zinc-200">
+                Portfolio
+              </h3>
+
+              <div className="text-4xl md:text-6xl font-medium tracking-tighter text-green-900 mt-[-4px] space-font">
+                //202
+                <Counter value={5} />
+              </div>
+            </motion.div>
           </div>
         </div>
 
@@ -133,10 +176,10 @@ const CaseStudy = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ 
-                  duration: 1.2, 
-                  delay: index * 0.15, 
-                  ease: [0.16, 1, 0.3, 1] 
+                transition={{
+                  duration: 1.2,
+                  delay: index * 0.15,
+                  ease: [0.16, 1, 0.3, 1]
                 }}
                 className="flex flex-col gap-2"
               >
