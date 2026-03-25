@@ -65,10 +65,25 @@ const Services = () => {
         </div>
 
         {/* Sliders Controls */}
-        <div></div>
+        <div className="flex items-center justify-between mt-16">
+          <div className="flex-1 max-w-[200px] h-[2px] bg-zinc-100 relative">
+            <div className="absolute left-0 top-0 h-full w-1/4 bg-green-800" />
+          </div>
+
+          <div className="flex gap-4">
+            <button className="size-12 rounded-full border border-zinc-200 center-item text-zinc-400 hover:border-zinc-800 hover:text-zinc-800 transition-all duration-300">
+              <ArrowLeft size={20} />
+            </button>
+
+            <button className="size-12 rounded-full border border-zinc-200 center-item text-zinc-400 hover:border-zinc-800 hover:text-zinc-800 transition-all duration-300">
+              <ArrowRight size={20} />
+            </button>
+          </div>
+        </div>
 
         {/* Technical Bottom Bar */}
-        <div></div>
+        <BottomBar title="Our Services" />
+
       </div>
     </section>
   )
