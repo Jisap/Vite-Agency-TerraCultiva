@@ -42,8 +42,52 @@ const CaseStudy = () => {
         </div>
 
         {/* Image Grid */}
+        <div className="grid md:grid-cols-12 gap-6 items-end mb-16">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="md:col-span-7 h-[500px] 2xl:h-[600px] bg-zinc-100 overflow-hidden rounded-sm relative"
+          >
+            <img
+              src="/images/case-main.png" alt="Aerial farm view" className="size-full object-cover saturate-120 hover:scale-105 transition-transform duration-100 cursor-pointer"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/ 80 to-transparent pointer-events-none" />
+          </motion.div>
+
+          <div className="md:col-span-5 flex flex-col gap-6">
+            <div className="grid grid-cols-2 gap-6">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="aspect-square bg-zinc-100 rounded-sm overflow-hidden hover:-translate-y-2 transition-all duration-200 ease-in"
+              >
+                <img
+                  src="/images/case-2.png"
+                  alt="Detail 1"
+                  className="size-full object-cover cursor-pointer hover:scale-105 transtion-all duration-200 ease-in"
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="aspect-square bg-zinc-100 rounded-sm overflow-hidden hover:-translate-y-2 transition-all duration-200 ease-in"
+              >
+                <img
+                  src="/images/case-3.png"
+                  alt="Detail 1"
+                  className="size-full object-cover cursor-pointer hover:scale-105 transtion-all duration-200 ease-in"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </div>
 
         {/* Metadata footer */}
+        <div>
+
+        </div>
       </div>
     </section>
   )
