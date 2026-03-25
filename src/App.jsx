@@ -1,5 +1,6 @@
 import About from "./components/sections/About";
 import Hero from "./components/sections/Hero";
+import Services from "./components/sections/Services";
 import Navigation from "./components/utils/Navigation";
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
     <main id="main-content" className="max-w-8xl mx-auto">
       <Hero />
       <About />
+      <Services />
     </main>
 
 
