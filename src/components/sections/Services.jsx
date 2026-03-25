@@ -46,60 +46,80 @@ const Services = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-xl">
             <motion.h2
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="text-6xl md:text-7xl font-medium tracking-tighter text-zinc-950 mb-6"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="text-6xl md:text-8xl font-medium tracking-tighter text-zinc-950 mb-6"
             >
               What we do
             </motion.h2>
 
-            <p className="text-sm mb:text-base text-zinc-400 font-medium leading-relaxed max-w-md">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="text-sm mb:text-lg text-zinc-400 font-medium leading-relaxed max-w-md"
+            >
               {servicesSubText}
-            </p>
+            </motion.p>
           </div>
 
           <SectionBtn title="All Services" />
         </div>
 
         {/* Services horizontal slider */}
-        <div className="relative overflow-hidden mb-12">
+        <div className="relative overflow-visible mb-12">
           <motion.div
             className="flex gap-4"
-            // Desplaza exactamente el ancho de una tarjeta por índice - el gap-5 (16px) entre tarjetas
-            animate={{ x: `calc(-${currentIndex} * (100% / ${itemsToShow}) - ${currentIndex * 16 / itemsToShow}px)` }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            // Desplaza exactamente el ancho de una tarjeta por índice (expresado en %)
+            animate={{ x: -(currentIndex * (100 / itemsToShow)) + "%" }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             {extendedServices.map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: (index % 4) * 0.1 }}
-                className="group relative h-[450px] flex-shrink-0 overflow-hidden rounded-sm cursor-pointer"
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ 
+                  duration: 1.2, 
+                  delay: (index % itemsToShow) * 0.15, 
+                  ease: [0.16, 1, 0.3, 1] 
+                }}
+                className="group relative h-[500px] flex-shrink-0 overflow-hidden rounded-sm cursor-pointer"
                 // Divide el ancho total del contenedor entre `itemsToShow`, restando previamente el espacio total ocupado por los gaps `(itemsToShow - 1) * 16px`
                 style={{ width: `calc((100% - ${(itemsToShow - 1) * 16}px) / ${itemsToShow})` }}
               >
-                <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110">
-                  <img
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                  <motion.img
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     src={service.img}
                     alt={service.title}
-                    className="size-full object-cover saturate-120 group-hover:blur-xs transition-all"
+                    className="size-full object-cover saturate-[1.1]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
                 </div>
 
-                <div className="absolute top-6 right-6">
-                  <div className="size-10 rounded-full bg-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-all duration-300">
-                    <ArrowUpRight size={18} />
-                  </div>
+                <div className="absolute top-8 right-8 z-10">
+                  <motion.div 
+                    whileHover={{ scale: 1.1, rotate: 45 }}
+                    className="size-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20 group-hover:bg-green-600 group-hover:border-green-500 transition-colors duration-500"
+                  >
+                    <ArrowUpRight size={20} />
+                  </motion.div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 w-full p-8 z-20">
-                  <h3 className="text-2xl font-medium text-white mb-3 tracking-tight">
+                <div className="absolute bottom-0 left-0 w-full p-10 z-20">
+                  <motion.h3 
+                    className="text-2xl md:text-3xl font-medium text-white mb-4 tracking-tight leading-none"
+                  >
                     {service.title}
-                  </h3>
+                  </motion.h3>
 
-                  <p className="text-zinc-300 text-xs font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 max-w-[200px]">
+                  <p className="text-zinc-300 text-sm font-medium leading-relaxed opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 max-w-[240px]">
                     {service.desc}
                   </p>
                 </div>
@@ -109,31 +129,31 @@ const Services = () => {
         </div>
 
         {/* Sliders Controls */}
-        <div className="flex items-center justify-between mt-16">
-          <div className="flex-1 max-w-[200px] h-[2px] bg-zinc-100 relative">
+        <div className="flex items-center justify-between mt-20">
+          <div className="flex-1 max-w-[200px] h-[1px] bg-zinc-100 relative overflow-hidden">
             <motion.div
               className="absolute top-0 h-full bg-green-800"
               animate={{
                 width: `${(itemsToShow / extendedServices.length) * 100}%`,
                 left: `${(currentIndex / extendedServices.length) * 100}%`
               }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             />
           </div>
 
           <div className="flex gap-4">
             <button
               onClick={prevSlide}
-              className="size-12 cursor-pointer rounded-full border border-zinc-200 center-item text-zinc-400 hover:border-zinc-800 hover:text-zinc-800 transition-all duration-300"
+              className="size-14 cursor-pointer rounded-full border border-zinc-200 flex items-center justify-center text-zinc-400 hover:border-zinc-800 hover:text-zinc-800 hover:bg-zinc-50 transition-all duration-300 active:scale-95"
             >
-              <ArrowLeft size={20} />
+              <ArrowLeft size={24} />
             </button>
 
             <button
               onClick={nextSlide}
-              className="size-12 cursor-pointer rounded-full border border-zinc-200 center-item text-zinc-400 hover:border-zinc-800 hover:text-zinc-800 transition-all duration-300"
+              className="size-14 cursor-pointer rounded-full border border-zinc-200 flex items-center justify-center text-zinc-400 hover:border-zinc-800 hover:text-zinc-800 hover:bg-zinc-50 transition-all duration-300 active:scale-95"
             >
-              <ArrowRight size={20} />
+              <ArrowRight size={24} />
             </button>
           </div>
         </div>
