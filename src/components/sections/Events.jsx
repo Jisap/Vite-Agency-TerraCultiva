@@ -80,9 +80,26 @@ const Events = () => {
         </div>
 
         {/* Footer Text Blocks */}
-        <div>
+        <div className="grid md:grid-cols-12 gap-12 mt-20 items-start">
+          <div className="md:col-span-5">
+            <div className="flex items-center gap-4 text-lg lg:text-xl capitalize tracking-wide text-zinc-400 mb-2">
+              Farmers by Heart
+            </div>
 
+            <div className="text-xl md:text-2xl font-medium tracking-tight text-zinc-800 pl-8 italic border-l-2 border-zinc-100">
+              Stewards by Choice.
+            </div>
+          </div>
+
+          <div className="md:col-span-7">
+            <p className="text-xs md:text-sm text-zinc-500 font-medium leading-relaxed max-w-lg ml-auto text-right">
+              {eventsContent}
+            </p>
+          </div>
         </div>
+
+        {/* Technical Bottom Bar */}
+        <BottomBar title="Events" />
       </div>
     </section>
   )
