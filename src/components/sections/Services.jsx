@@ -7,15 +7,15 @@ import { useState, useEffect } from "react"
 
 const Services = () => {
   const [currentIndex, setCurrentIndex] = useState(0)               // Índice de la tarjeta que está "primera" visible
-  const [itemsToShow, setItemsToShow] = useState(4);                // Cuántas tarjetas caben según el ancho de pantalla (1, 2 ó 4)
+  const [itemsToShow, setItemsToShow] = useState(4);                // Tarjetas visibles según el ancho (1, 2, 3 ó 4)
 
+  const extendedServices = Array(4).fill(services).flat()           // Duplicamos servicios para un slider funcional
 
-  const extendedServices = Array(4).fill(services).flat()           // Duplicamos los servicios para que el slider tenga contenido y sea funcional
-
-  useEffect(() => {                                                 // escucha el resize de la ventana y actualiza itemsToShow en consecuencia
+  useEffect(() => {                                                 // Escucha el resize para actualizar itemsToShow
     const handleResize = () => {
-      if (window.innerWidth < 768) setItemsToShow(1)
-      else if (window.innerWidth < 1024) setItemsToShow(2)
+      if (window.innerWidth < 640) setItemsToShow(1)
+      // else if (window.innerWidth < 1024) setItemsToShow(2)
+      else if (window.innerWidth < 1440) setItemsToShow(3)
       else setItemsToShow(4)
     }
     handleResize()
@@ -55,12 +55,12 @@ const Services = () => {
               What we do
             </motion.h2>
 
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="text-sm mb:text-lg text-zinc-400 font-medium leading-relaxed max-w-md"
+              className="text-sm md:text-lg text-zinc-400 font-medium leading-relaxed max-w-md"
             >
               {servicesSubText}
             </motion.p>
@@ -69,63 +69,71 @@ const Services = () => {
           <SectionBtn title="All Services" />
         </div>
 
-        {/* Services horizontal slider */}
-        <div className="relative overflow-visible mb-12">
-          <motion.div
-            className="flex gap-4"
-            // Desplaza exactamente el ancho de una tarjeta por índice (expresado en %)
-            animate={{ x: -(currentIndex * (100 / itemsToShow)) + "%" }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        {/* Services horizontal slider con Máscara Sutil */}
+        <div className="relative mb-12">
+          <div
+            className="relative overflow-visible"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent, black 2%, black 98%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 2%, black 98%, transparent)'
+            }}
           >
-            {extendedServices.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ 
-                  duration: 1.2, 
-                  delay: (index % itemsToShow) * 0.15, 
-                  ease: [0.16, 1, 0.3, 1] 
-                }}
-                className="group relative h-[500px] flex-shrink-0 overflow-hidden rounded-sm cursor-pointer"
-                // Divide el ancho total del contenedor entre `itemsToShow`, restando previamente el espacio total ocupado por los gaps `(itemsToShow - 1) * 16px`
-                style={{ width: `calc((100% - ${(itemsToShow - 1) * 16}px) / ${itemsToShow})` }}
-              >
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                  <motion.img
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    src={service.img}
-                    alt={service.title}
-                    className="size-full object-cover saturate-[1.1]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
-                </div>
+            <motion.div
+              className="flex gap-4"
+              // Desplaza exactamente el ancho de una tarjeta por índice (expresado en %)
+              animate={{ x: -(currentIndex * (100 / itemsToShow)) + "%" }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {extendedServices.map((service, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{
+                    duration: 1.2,
+                    delay: (index % itemsToShow) * 0.15,
+                    ease: [0.16, 1, 0.3, 1]
+                  }}
+                  className="group relative h-[500px] flex-shrink-0 overflow-hidden rounded-sm cursor-pointer"
+                  // Cálculo dinámico del ancho: (100% - gaps acumulados) / items_visibles
+                  style={{ width: `calc((100% - ${(itemsToShow - 1) * 16}px) / ${itemsToShow})` }}
+                >
+                  <div className="absolute inset-0 z-0 overflow-hidden">
+                    <motion.img
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                      src={service.img}
+                      alt={service.title}
+                      className="size-full object-cover saturate-[1.1]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+                  </div>
 
-                <div className="absolute top-8 right-8 z-10">
-                  <motion.div 
-                    whileHover={{ scale: 1.1, rotate: 45 }}
-                    className="size-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20 group-hover:bg-green-600 group-hover:border-green-500 transition-colors duration-500"
-                  >
-                    <ArrowUpRight size={20} />
-                  </motion.div>
-                </div>
+                  <div className="absolute top-8 right-8 z-10">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 45 }}
+                      className="size-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20 group-hover:bg-green-600 group-hover:border-green-500 transition-colors duration-500"
+                    >
+                      <ArrowUpRight size={20} />
+                    </motion.div>
+                  </div>
 
-                <div className="absolute bottom-0 left-0 w-full p-10 z-20">
-                  <motion.h3 
-                    className="text-2xl md:text-3xl font-medium text-white mb-4 tracking-tight leading-none"
-                  >
-                    {service.title}
-                  </motion.h3>
+                  <div className="absolute bottom-0 left-0 w-full p-10 z-20">
+                    <motion.h3
+                      className="text-2xl md:text-3xl font-medium text-white mb-4 tracking-tight leading-none"
+                    >
+                      {service.title}
+                    </motion.h3>
 
-                  <p className="text-zinc-300 text-sm font-medium leading-relaxed opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 max-w-[240px]">
-                    {service.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                    <p className="text-zinc-300 text-sm font-medium leading-relaxed opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 max-w-[240px]">
+                      {service.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
 
         {/* Sliders Controls */}
@@ -158,7 +166,6 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Technical Bottom Bar */}
         <BottomBar title="Our Services" />
       </div>
     </section>
