@@ -78,6 +78,11 @@ const Events = () => {
             </div>
           </div>
         </div>
+
+        {/* Footer Text Blocks */}
+        <div>
+
+        </div>
       </div>
     </section>
   )
