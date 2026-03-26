@@ -73,6 +73,15 @@ const Blogs = () => {
         </div>
 
         {/* Bottom Motto */}
+        <div className="mt-32">
+          <div className="flex items-center gap-4 text-lg lg:text-xl capitalize tracking-wide text-zinc-400 mb-2">
+            Nourishing the Land
+          </div>
+
+          <div className="text-xl md:text-2xl font-medium tracking-tight text-zinc-800 pl-12 italic border-l-2 border-zinc-100">
+            Cultivating Communities.
+          </div>
+        </div>
 
         {/* Technical Bottom Bar */}
         <BottomBar title="Blogs" />
