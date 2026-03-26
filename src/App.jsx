@@ -1,5 +1,6 @@
 import About from "./components/sections/About";
 import CaseStudy from "./components/sections/CaseStudy";
+import Events from "./components/sections/Events";
 import Hero from "./components/sections/Hero";
 import Services from "./components/sections/Services";
 import Navigation from "./components/utils/Navigation";
@@ -15,6 +16,7 @@ const App = () => {
       <About />
       <Services />
       <CaseStudy />
+      <Events />
     </main>
 
 
