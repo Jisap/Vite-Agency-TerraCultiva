@@ -7,14 +7,14 @@ import { useState, useEffect } from "react"
 
 const Services = () => {
   const [currentIndex, setCurrentIndex] = useState(0)               // Índice de la tarjeta que está "primera" visible
-  const [itemsToShow, setItemsToShow] = useState(4);                // Tarjetas visibles según el ancho (1, 2, 3 ó 4)
+  const [itemsToShow, setItemsToShow] = useState(4);                // Tarjetas visibles según el ancho (1, 3 ó 4)
 
-  const extendedServices = Array(4).fill(services).flat()           // Duplicamos servicios para un slider funcional
+  const extendedServices = Array(4).fill(services).flat()           // Duplicamos los servicios para que el slider tenga contenido y sea funcional
 
-  useEffect(() => {                                                 // Escucha el resize para actualizar itemsToShow
+  useEffect(() => {                                                 // escucha el resize de la ventana y actualiza itemsToShow en consecuencia
     const handleResize = () => {
       if (window.innerWidth < 640) setItemsToShow(1)
-      // else if (window.innerWidth < 1024) setItemsToShow(2)
+      // else if (window.innerWidth < 1024) setItemsToShow(2)        // Opción de 2 comentada según pedido
       else if (window.innerWidth < 1440) setItemsToShow(3)
       else setItemsToShow(4)
     }
@@ -74,14 +74,15 @@ const Services = () => {
           <div
             className="relative overflow-visible"
             style={{
+              // Máscara al 2% para un efecto muy sutil
               maskImage: 'linear-gradient(to right, transparent, black 2%, black 98%, transparent)',
               WebkitMaskImage: 'linear-gradient(to right, transparent, black 2%, black 98%, transparent)'
             }}
           >
             <motion.div
               className="flex gap-4"
-              // Desplaza exactamente el ancho de una tarjeta por índice (expresado en %)
-              animate={{ x: -(currentIndex * (100 / itemsToShow)) + "%" }}
+              // CORRECCIÓN: Ahora el shift tiene en cuenta el gap de 16px para alinear perfectamente
+              animate={{ x: `calc(-${currentIndex} * (100% + 16px) / ${itemsToShow})` }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               {extendedServices.map((service, index) => (
@@ -96,7 +97,7 @@ const Services = () => {
                     ease: [0.16, 1, 0.3, 1]
                   }}
                   className="group relative h-[500px] flex-shrink-0 overflow-hidden rounded-sm cursor-pointer"
-                  // Cálculo dinámico del ancho: (100% - gaps acumulados) / items_visibles
+                  // Divide el ancho total del contenedor entre itemsToShow, restando previamente el espacio ocupado por los gaps
                   style={{ width: `calc((100% - ${(itemsToShow - 1) * 16}px) / ${itemsToShow})` }}
                 >
                   <div className="absolute inset-0 z-0 overflow-hidden">
