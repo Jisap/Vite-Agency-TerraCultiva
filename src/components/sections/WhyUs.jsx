@@ -33,10 +33,78 @@ const WhyUs = () => {
         </div>
 
         {/* Benefits Cards */}
+        <div className="grid md:grid-cols-3 gap-6 items-start">
+          {benefits.map((benefit, i) => (
+            <div
+              key={i}
+              className={`
+                relative p-8 md:p-10 rounded-sm flex flex-col min-h-[400px] transition-all duration-500 group cursor-pointer
+                ${benefit.variant === "primary"
+                  ? "bg-green-800 text-white mt-0"
+                  : "bg-zinc-50 text-zinc-950 mt-12 md:mt-24"
+                }  
+              `}
+            >
+              <div className="flex justify-between items-start mb-16">
+                <div className="flex items-start gap-2">
+                  <span className="text-lg capitalize opacity-40">
+                    {benefit.id}
+                  </span>
+
+                  <h3 className="text-2xl md:text-3xl font-medium tracking-tight leading-none">
+                    {benefit.title}
+                  </h3>
+                </div>
+
+                <div
+                  className={`
+                  size-10 rounded-full border center-item transition-all 
+                  ${benefit.variant === "primary"
+                      ? "border-white/20 group-hover:be-white group-hover:text-green-800"
+                      : "border-zinc-200 group-hover:bg-green-800 group-hover:text-white"
+                    }
+                `}
+                >
+                  <ArrowUpRight size={18} />
+                </div>
+              </div>
+
+              <div className="mt-auto">
+                <span className={`text-sm tracking-wide mb-4 block
+                  ${benefit.variant === "primary" ? "text-green-300" : "text-zinc-400"}
+                    
+                  `}
+                >
+                  {benefit.tag}
+                </span>
+
+                <p className={`
+                  text-sm lg:text-base leading-relaxed font-medium
+                  ${benefit.variant === "primary"
+                    ? "text-green-50/80"
+                    : "text-zinc-500"
+                  }  
+                `}>
+                  {benefit.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Section Slogans */}
+        <div className="gird md:grid-cols-2 gap-12 mt-32">
+          <div className="flex items-center gap-4 text-lg lg:text-xl capitalize tracking-wide text-zinc-400 mb-2">
+            // Cultivating Dreams,
+          </div>
+
+          <div className="text-xl md:text-2xl font-medium tracking-tight text-zinc-800 pl-8 italic border-l-2 border-zinc-100">
+            Showing Success.
+          </div>
+        </div>
 
         {/* Bottom Bar */}
+        <BottomBar title="Why Us" />
       </div>
     </section>
   )
