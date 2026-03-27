@@ -19,9 +19,9 @@ const WhyUs = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-4xl md:text-6xl font-medium tracking-tighter text-zinc-950 max-w-4xl leading-[1.1] mb-8"
           >
-            Why Choose <span className="text-zinc-300 font-normal italic">// Terra Cultiva</span>{" "}
+            Why Choose <span className="text-zinc-300 font-normal"> Terra Cultiva</span>{" "}
             for Your Agricultural Journey? <br />
-            Unveilling the Unique Advantages and <span className="text-zinc-300 italic">Sustainable Solutions </span>
+            Unveilling the Unique Advantages and <span className="text-zinc-300">Sustainable Solutions </span>
           </motion.h2>
 
           <div className="flex flex-col md:flex-row items-center gap-8 w-full justify-between mt-12 border-b border-zinc-100 pb-12">
@@ -32,7 +32,7 @@ const WhyUs = () => {
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-xs md:text-sm text-zinc-400 font-medium tracking-tight uppercase"
             >
-              / Discover the Distinct Advantages of Partnering with Terra Cultiva.
+              // Discover the Distinct Advantages of Partnering with Terra Cultiva.
             </motion.p>
 
             <motion.div
@@ -115,23 +115,23 @@ const WhyUs = () => {
         </div>
 
         {/* Section Slogans */}
-        <div className="grid md:grid-cols-2 gap-12 mt-32 items-center">
+        <div className="mt-32">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-4 text-lg lg:text-xl capitalize tracking-wide text-zinc-400"
+            className="flex items-center gap-3 text-lg lg:text-xl capitalize tracking-wide text-zinc-400 mb-2"
           >
-            // Cultivating Dreams,
+            <span className="text-zinc-300">//</span> Cultivating Dreams,
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="text-xl md:text-2xl font-medium tracking-tight text-zinc-800 lg:pl-8 italic border-l-2 border-zinc-100"
+            className="text-xl md:text-2xl font-medium tracking-tight text-zinc-800 pl-12 italic border-l-2 border-zinc-100"
           >
             Showing Success.
           </motion.div>

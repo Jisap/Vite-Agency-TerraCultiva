@@ -48,7 +48,7 @@ const CtaSection = () => {
             className="text-5xl md:text-8xl font-medium tracking-tighter text-white leading-[0.85] mb-16"
           >
             Join the Agricultural <br />
-            <span className="text-zinc-400 italic font-normal">Revolution</span>
+            <span className="text-zinc-400 font-normal">Revolution</span>
           </motion.h2>
 
           <motion.div
@@ -86,4 +86,4 @@ const CtaSection = () => {
   )
 }
 
-export default CtaSection
+export default CtaSection
