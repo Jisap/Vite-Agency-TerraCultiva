@@ -1,6 +1,7 @@
 import About from "./components/sections/About";
 import Blogs from "./components/sections/Blogs";
 import CaseStudy from "./components/sections/CaseStudy";
+import CtaSection from "./components/sections/CtaSection";
 import Events from "./components/sections/Events";
 import Hero from "./components/sections/Hero";
 import Services from "./components/sections/Services";
@@ -21,6 +22,7 @@ const App = () => {
       <Events />
       <Blogs />
       <WhyUs />
+      <CtaSection />
     </main>
 
 
